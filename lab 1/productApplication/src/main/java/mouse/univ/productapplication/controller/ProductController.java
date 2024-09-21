@@ -10,8 +10,4 @@ public class ProductController {
     public Product getProduct(@PathVariable("id") long id) {
         return new Product(id, id+" name");
     }
-    @PostMapping("/{id}")
-    public Product postProduct(@PathVariable("id") long id) {
-        return new Product(id, id+" name");
-    }
 }
