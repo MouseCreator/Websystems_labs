@@ -14,4 +14,9 @@ public class ProductController {
     public Product postProduct(@PathVariable("id") long id) {
         return new Product(id, id+" name");
     }
+
+    @DeleteMapping("/{id}")
+    public Product deleteProduct(@PathVariable("id") long id) {
+        return new Product(id, id+" name");
+    }
 }
