@@ -1,2 +1,11 @@
-package mouse.univ.productapp.model;public class Product {
+package mouse.univ.productapp.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+public class Product {
+    private Long id;
+    private String name;
 }
