@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/products")
@@ -16,8 +17,20 @@ public class ProductController {
 
     private final ProductService productService;
     @GetMapping("/{id}")
-    public ProductResponseDTO getProduct(@PathVariable("id") long id) {
-        return productService.getProductById(id);
+    public ProductResponseDTO getProduct(@PathVariable("id") long id,
+                                         @RequestParam("timeout") Optional<Long> timeoutOpt) {
+        long timeout = 0;
+        if (timeoutOpt.isPresent()) {
+            timeout = timeoutOpt.get();
+        }
+        try {
+            if (timeout > 0) {
+                Thread.sleep(timeout);
+            }
+        } catch (InterruptedException e) {
+            return new ProductResponseDTO(0L, "Timeout");
+        }
+        return new ProductResponseDTO(id, "Product " + id);
     }
     @GetMapping
     public List<ProductResponseDTO> getAll() {

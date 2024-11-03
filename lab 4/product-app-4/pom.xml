@@ -6,13 +6,14 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.3.5</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath/>
 	</parent>
 	<groupId>mouse.lab</groupId>
-	<artifactId>product-app-4</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<artifactId>product-app</artifactId>
+	<version>1.0</version>
 	<name>product-app-4</name>
 	<description>product-app-4</description>
+	<packaging>jar</packaging>
 	<url/>
 	<licenses>
 		<license/>

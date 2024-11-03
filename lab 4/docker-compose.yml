@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  spring-boot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring-boot-app-4
+    ports:
+      - "8080:8080"
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins-4
+    build:
+      context: .
+      dockerfile: jenkins/Dockerfile.jenkins
+    ports:
+      - "8085:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+volumes:
+  jenkins_home:
