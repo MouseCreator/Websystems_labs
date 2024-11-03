@@ -25,7 +25,7 @@ export default function() {
 	const url = `http://spring-boot-app:8080/products/${productId}?timeout={timeout}`
 	const response = http.get(url)
 	
-	check(res, {
+	check(response, {
 		'status': (r) => r.status === 200
 	})
 	
