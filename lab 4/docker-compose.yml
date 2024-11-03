@@ -8,6 +8,15 @@ services:
     container_name: spring-boot-app-4
     ports:
       - "8080:8080"
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/prometheus/prometheus.yml
+    command:
+      - '--config.file=/prometheus/prometheus.yml'
+    ports:
+      - "9090:9090"
   jenkins:
     image: jenkins/jenkins:lts
     container_name: jenkins-4

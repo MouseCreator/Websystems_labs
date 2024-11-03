@@ -22,7 +22,7 @@ export const options = {
 export default function() {
 	const productId = randomIntBetween(1, 1000)
 	const timeout = randomIntBetween(1, 150)
-	const url = `http://springboot-app:8080/products/${productId}?timeout={timeout}`
+	const url = `http://spring-boot-app:8080/products/${productId}?timeout={timeout}`
 	const response = http.get(url)
 	
 	check(res, {
