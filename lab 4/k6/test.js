@@ -9,7 +9,7 @@ function randomIntBetween(min, max) {
 export const options = {
 	scenarios: {
 		products: {
-			executor: 'ramping-vus'
+			executor: 'ramping-vus',
 			stages: [
 				{ duration: '60s', target: 20 },
 				{ durations: '60s', target: 20 },
