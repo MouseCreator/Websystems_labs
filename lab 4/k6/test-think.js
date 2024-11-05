@@ -23,7 +23,7 @@ export const options = {
 export default function() {
 	const productId = randomIntBetween(1, 1000)
 	const timeout = randomIntBetween(1, 150)
-	const url = `http://jenkins:8081/products/${productId}?timeout={timeout}`
+	const url = `http://jenkins:8081/products/${productId}?timeout=${timeout}`
 	const response = http.get(url)
 	
 	check(response, {
