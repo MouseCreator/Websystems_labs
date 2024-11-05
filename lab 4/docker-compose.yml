@@ -1,13 +1,6 @@
 version: '3'
 
 services:
-  spring-boot-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: spring-boot-app-4
-    ports:
-      - "8080:8080"
   jenkins:
     image: jenkins/jenkins:lts
     container_name: jenkins-4
