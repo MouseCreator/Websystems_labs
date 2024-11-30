@@ -5,31 +5,37 @@ services:
     build:
       context: ./products-app
     environment:
-      - SPRING_PROFILES_ACTIVE=no_cache
+      - SPRING_PROFILES_ACTIVE=redis #no_cache
     ports:
       - "8081:8080"
     networks:
       - app-network
+    depends_on:
+      - redis
 
   app_2:
     build:
       context: ./products-app
     environment:
-      - SPRING_PROFILES_ACTIVE=map_cache
+      - SPRING_PROFILES_ACTIVE=redis #map_cache
     ports:
       - "8082:8080"
     networks:
       - app-network
+    depends_on:
+      - redis
 
   app_3:
     build:
       context: ./products-app
     environment:
-      - SPRING_PROFILES_ACTIVE=caffeine_cache
+      - SPRING_PROFILES_ACTIVE=redis #caffeine_cache
     ports:
       - "8083:8080"
     networks:
       - app-network
+    depends_on:
+      - redis
 
   nginx:
     image: nginx:latest
@@ -41,6 +47,12 @@ services:
       - app_1
       - app_2
       - app_3
+    networks:
+      - app-network
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
     networks:
       - app-network
 

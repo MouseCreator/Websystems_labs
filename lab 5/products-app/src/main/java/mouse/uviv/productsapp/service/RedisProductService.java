@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-@Profile({"map_cache", "caffeine_cache"})
+@Profile({"redis"})
 @Log4j2
-public class CacheableProductService implements ProductService {
+public class RedisProductService implements ProductService {
     private final ProductSupplier productSupplier;
     @Autowired
-    public CacheableProductService(ProductSupplier productSupplier) {
+    public RedisProductService(ProductSupplier productSupplier) {
         this.productSupplier = productSupplier;
     }
 
