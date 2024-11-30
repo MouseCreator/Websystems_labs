@@ -1,9 +1,11 @@
 package mouse.uviv.productsapp.profiles;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
+@Log4j2
 public class ProfileManager {
     private final Environment environment;
     public ProfileManager(Environment environment) {
@@ -11,7 +13,7 @@ public class ProfileManager {
     }
     public void getActiveProfiles() {
         for (String profileName : environment.getActiveProfiles()) {
-            System.out.println("[PROFILE] Active profile - " + profileName);
+            log.info("[PROFILE] Active profile - " + profileName);
         }
     }
 }

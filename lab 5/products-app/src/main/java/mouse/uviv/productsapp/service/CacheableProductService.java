@@ -11,14 +11,14 @@ import java.util.Optional;
 @Service
 @Profile({"map_cache", "caffeine_cache"})
 public class CacheableProductService implements ProductService {
-    private final RegularProductService productService;
+    private final ProductSupplier productSupplier;
     @Autowired
-    public CacheableProductService(RegularProductService productService) {
-        this.productService = productService;
+    public CacheableProductService(ProductSupplier productSupplier) {
+        this.productSupplier = productSupplier;
     }
 
     @Cacheable(value = "products", key="#id")
     public Optional<Product> getProduct(Long id, Long timeout) {
-        return productService.getProduct(id, timeout);
+        return productSupplier.getProduct(id, timeout);
     }
 }
