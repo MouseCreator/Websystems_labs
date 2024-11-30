@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-@Profile("!no_cache")
-public class CacheableProductService {
+@Profile({"map_cache", "caffeine_cache"})
+public class CacheableProductService implements ProductService {
     private final RegularProductService productService;
     @Autowired
     public CacheableProductService(RegularProductService productService) {

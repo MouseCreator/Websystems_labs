@@ -2,6 +2,7 @@ package mouse.uviv.productsapp;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import mouse.uviv.productsapp.init.DefaultProfileInitializer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.CacheManager;
@@ -20,11 +21,13 @@ import java.util.concurrent.TimeUnit;
 public class ProductsAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProductsAppApplication.class, args);
+		SpringApplication app = new SpringApplication(ProductsAppApplication.class);
+		app.addInitializers(new DefaultProfileInitializer());
+		app.run(args);
 	}
 
 	@Bean
-	@Profile({"map_cache", "default"})
+	@Profile({"map_cache"})
 	public CacheManager concurrentMap() {
 		SimpleCacheManager simpleCacheManager = new SimpleCacheManager();
 
